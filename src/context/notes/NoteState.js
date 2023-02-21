@@ -19,7 +19,7 @@ const NoteState = (props) => {
       headers: {
         // the headers we require in Fetch Notes request
         'Content-Type': 'application/json',
-        "authToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNjNlNGZlNDEwYWNjMzYzODM4ZTY1NTdjIn0sImlhdCI6MTY3Njc4NzcwMn0.4bBwRarefVHJc2nFFYDVVB13MUF34915EYejwOu5QIs"
+        "auth-token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNjNlNGZlNDEwYWNjMzYzODM4ZTY1NTdjIn0sImlhdCI6MTY3Njg4MzU0MH0.iZuS9gtRpJTGZAGSUQhDdv1WXdWjJ6RBuqqUE1Bn8ek"
         // Here, hardcoding auth-token - of the user whose notes to be fetched as login hasn't been implemented yet        
       },          
     });
@@ -36,7 +36,7 @@ const NoteState = (props) => {
       method: 'POST', 
       headers: {
         'Content-Type': 'application/json',
-        "authToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNjNlNGZlNDEwYWNjMzYzODM4ZTY1NTdjIn0sImlhdCI6MTY3Njc4NzcwMn0.4bBwRarefVHJc2nFFYDVVB13MUF34915EYejwOu5QIs"
+        "auth-token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNjNlNGZlNDEwYWNjMzYzODM4ZTY1NTdjIn0sImlhdCI6MTY3Njg4MzU0MH0.iZuS9gtRpJTGZAGSUQhDdv1WXdWjJ6RBuqqUE1Bn8ek"
         // the headers we require in Add Note request
       },    
       body: JSON.stringify(title, description, tag) 
@@ -54,12 +54,27 @@ const NoteState = (props) => {
      };
       // setNotes(notes.push(note))
       setNotes(notes.concat(note))
+      const json = response.json(); 
+      console.log(json);
     }    
+    
   
 
   // Delete a Note
-  const deleteNote = (id) => {
-    //TODO: API Call
+  const deleteNote = async (id) => {
+
+    // Fetch API Call
+    const response = await fetch(`${host}/api/notes/updatenote/${id}`, {
+      // host mentione din ThCl has been declared above 
+      method: 'DELETE', 
+      headers: {
+        'Content-Type': 'application/json',
+        "auth-token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNjNlNGZlNDEwYWNjMzYzODM4ZTY1NTdjIn0sImlhdCI6MTY3Njg4MzU0MH0.iZuS9gtRpJTGZAGSUQhDdv1WXdWjJ6RBuqqUE1Bn8ek"
+        // the headers we require in Update Note request
+      }
+    });
+    const json = response.json(); 
+    console.log(json);
     console.log("Deleting the note with id" + id);
     const newNotes = notes.filter((note)=> {return note._id!==id})
     setNotes(newNotes)
@@ -73,12 +88,13 @@ const NoteState = (props) => {
       method: 'POST', 
       headers: {
         'Content-Type': 'application/json',
-        "authToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNjNlNGZlNDEwYWNjMzYzODM4ZTY1NTdjIn0sImlhdCI6MTY3Njc4NzcwMn0.4bBwRarefVHJc2nFFYDVVB13MUF34915EYejwOu5QIs"
+        "auth-token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNjNlNGZlNDEwYWNjMzYzODM4ZTY1NTdjIn0sImlhdCI6MTY3Njg4MzU0MH0.iZuS9gtRpJTGZAGSUQhDdv1WXdWjJ6RBuqqUE1Bn8ek"
         // the headers we require in Update Note request
       },    
       body: JSON.stringify(title, description, tag) 
     });
     const json = response.json(); 
+    console.log(json);
     
     // Logic to edit on client side (UI)
     for (let index = 0; index < notes.length; index++ ){

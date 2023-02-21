@@ -15,6 +15,7 @@ app.get('/', (req, res) => {
 app.use(cors())
 app.use(express.json())    
 //to use request.body , you’ll have to use a middleware - app.use()
+app.use(express.urlencoded({ extended: false }));
 
 //Available Routes
 app.use('/api/auth', require('./routes/auth'))

@@ -5,7 +5,8 @@ const NotesItem = (props) => {
     const context = useContext(NoteContext);
     const {deleteNote} = context;
 
-    const {note} = props;
+    // const {note} = props;
+    const {note, updateNote } = props;
 
   return (
     <div className="col-md-3">
@@ -15,7 +16,7 @@ const NotesItem = (props) => {
                 <p className="card-description"> {note.description}  </p>
                 <div className="d-flex align-items-left">
                 
-                <i className="far fa-edit mx-2"></i>
+                <i className="far fa-edit mx-2" onClick={()=> {updateNote(note)}} ></i>
                 <i className="far fa-trash-alt mx-2" onClick={()=> {deleteNote(note._id)}} ></i>
                 </div>
             </div>
