@@ -7,26 +7,28 @@ const  Notes = () => {
     const context = useContext(NoteContext);
     // const {notes, setNotes} = context;
     // const {notes} = context;
-    const {notes, getNotes} = context;
+    const {notes, getNotes, editNote} = context;
     useEffect(() => {
       getNotes();     
-    }, [])  
+    })  
 
     const ref = useRef(null);
-    const [note, setNote] = useState({etitle: "", edescripton: "", etag: "default"})
+    const refClose = useRef(null);
+    const [note, setNote] = useState({ id: "" , etitle: "", edescripton: "", etag: ""})
     
     const updateNote = (currentnote) => {        
         ref.current.click();
-        setNote({etitle: currentnote.title, edescription: currentnote.description, etag: currentnote.tag} );
+        setNote({ id: currentnote._id, etitle: currentnote.title, edescription: currentnote.description, etag: currentnote.tag} );
     }
     // Now we have to add functionality to ‘update note’ here after editing.
     // For this, we’ll modify edit function in NoteState such that ‘updateNote’ above can use it.
 
     const handleClick = (e) => {
-        // const {addNote} = context;
-        e.preventDefault();
-        // addNote(note.title, note.description, note.tag);
-    }
+        console.log("Updating the note...", note) 
+        editNote(note.id, note.etitle, note.edescripton, note.etag)
+        refClose.current.click();  
+    } 
+
     const onChange = (e) => {
         setNote({...note, [e.target.name]: e.target.value})
     }
@@ -65,8 +67,8 @@ const  Notes = () => {
 
             </div>
             <div className="modal-footer">
-                <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                <button type="button" className="btn btn-primary" onClick={updateNote}>Update</button>
+                <button ref={refClose} type="button" className="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button type="button" className="btn btn-primary" onClick={handleClick}>Update</button>
             </div>
             </div>
         </div>
