@@ -55,7 +55,7 @@ const NoteState = (props) => {
   const deleteNote = async (id) => {
 
     // Fetch API Call
-    const response = await fetch(`${host}/api/notes/updatenote/${id}`, {
+    const response = await fetch(`${host}/api/notes/deletenote/${id}`, {
       // host mentione din ThCl has been declared above 
       method: 'DELETE', 
       headers: {
