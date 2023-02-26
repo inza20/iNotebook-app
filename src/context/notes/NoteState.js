@@ -56,11 +56,8 @@ const NoteState = (props) => {
 
     // Fetch API Call
     const response = await fetch(`${host}/api/notes/deletenote/${id}`, {
-<<<<<<< HEAD
       // host mentioned in ThCl has been declared above 
-=======
-      // host mentione din ThCl has been declared above 
->>>>>>> e20533658f17100a62e910e4d99b351ee23ba54f
+
       method: 'DELETE', 
       headers: {
         'Content-Type': 'application/json',
@@ -92,7 +89,7 @@ const NoteState = (props) => {
       body: JSON.stringify({title, description, tag}) 
     });
     const json = await response.json(); 
-    // console.log(json);
+    console.log(json);
 
     // console.log(JSON.stringify(notes))
     // Logic to edit on client side (UI)

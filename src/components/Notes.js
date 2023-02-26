@@ -25,15 +25,15 @@ const  Notes = () => {
 
     // Function for updating in modal
     const handleClick = (e) => {
-<<<<<<< HEAD
+
         // console.log("Updating the note...", note) 
         editNote(note.id, note.etitle, note.edescription, note.etag)
         refClose.current.click();  
-=======
+
         console.log("Updating the note...", note)
         editNote(note.id, note.etitle, note.edescription, note.etag)
         refClose.current.click();
->>>>>>> e20533658f17100a62e910e4d99b351ee23ba54f
+
     } 
 
     const onChange = (e) => {
