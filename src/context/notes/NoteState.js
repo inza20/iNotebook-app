@@ -24,7 +24,7 @@ const NoteState = (props) => {
       }          
     });
     const json = await response.json();
-    console.log(json) 
+    // console.log(json) 
     setNotes(json)
   }
 
@@ -42,11 +42,11 @@ const NoteState = (props) => {
       body: JSON.stringify({title, description, tag}) 
     });
 
-    console.log("adding a new note")
+    // console.log("adding a new note")
     const note = await response.json(); 
       // setNotes(notes.push(note))
       setNotes(notes.concat(note))
-      console.log("new note : ", note ) 
+      // console.log("new note : ", note ) 
     }    
     
   
@@ -55,8 +55,8 @@ const NoteState = (props) => {
   const deleteNote = async (id) => {
 
     // Fetch API Call
-    const response = await fetch(`${host}/api/notes/updatenote/${id}`, {
-      // host mentione din ThCl has been declared above 
+    const response = await fetch(`${host}/api/notes/deletenote/${id}`, {
+      // host mentioned in ThCl has been declared above 
       method: 'DELETE', 
       headers: {
         'Content-Type': 'application/json',
@@ -64,10 +64,12 @@ const NoteState = (props) => {
         // the headers we require in Update Note request
       }
     });
+    // eslint-disable-next-line
     const json = response.json(); 
-    console.log(json)
+    
+    // console.log(json)
 
-    console.log("Deleting the note with id " + id);
+    // console.log("Deleting the note with id " + id);
     const newNotes = notes.filter((note)=> {return note._id!==id})
     setNotes(newNotes)
   }
@@ -86,7 +88,7 @@ const NoteState = (props) => {
       body: JSON.stringify({title, description, tag}) 
     });
     const json = await response.json(); 
-    console.log(json);
+    // console.log(json);
 
     // console.log(JSON.stringify(notes))
     // Logic to edit on client side (UI)

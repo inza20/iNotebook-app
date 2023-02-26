@@ -14,7 +14,7 @@ const  Notes = () => {
 
     const ref = useRef(null);
     const refClose = useRef(null);
-    const [note, setNote] = useState({ id: "" , etitle: "", edescripton: "", etag: ""})
+    const [note, setNote] = useState({ id: "" , etitle: "", edescription: "", etag: ""})
     
     const updateNote = (currentnote) => {        
         ref.current.click();
@@ -25,8 +25,8 @@ const  Notes = () => {
 
     // Function for updating in modal
     const handleClick = (e) => {
-        console.log("Updating the note...", note) 
-        editNote(note.id, note.etitle, note.edescripton, note.etag)
+        // console.log("Updating the note...", note) 
+        editNote(note.id, note.etitle, note.edescription, note.etag)
         refClose.current.click();  
     } 
 
