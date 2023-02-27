@@ -20,6 +20,7 @@ export const Login = (props) => {
           const json = await response.json();
           console.log(json);
           if(json.success){
+            //save the auth token and redirect
             localStorage.setItem('token' , json.authtoken);
             navigate("/");
           } else{
@@ -32,7 +33,7 @@ export const Login = (props) => {
     }
 
   return (
-    <div>
+    <div className="my-5">
         <form >
             
             <div className="mb-3 " style={{marginTop: "3.56rem"}}>
@@ -46,7 +47,7 @@ export const Login = (props) => {
                 <input type="password" className="form-control" value={credentials.password} onChange={onChange} id="password" name="password"/>
             </div>
             
-            <button type="submit" className="btn btn-primary" onClick={handleSubmit} >Submit</button>
+            <button type="submit" className="btn btn-primary" onClick={handleSubmit} >Login</button>
         </form>
     </div>
   )
