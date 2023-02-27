@@ -12,7 +12,7 @@ const About = () => {
         new important task, you can use iNotebook, which will help you keep
         track of your plans and tasks at all times.{" "}
       </p>
-      <div class="card-footer text-muted align-center"><small>Created by Inshirah Zainab</small></div>
+      <div className="card-footer text-muted align-center"><small>Created by Inshirah Zainab</small></div>
     </div>
   );
 };

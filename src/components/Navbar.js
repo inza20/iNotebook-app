@@ -40,8 +40,20 @@ export default function Navbar() {
                   About
                 </Link>
               </li>
-            </ul>
+            </ul> 
+
+            <div className= "d-flex align-items-end flex-row-reverse">
+            <form >
+              <Link className="btn btn-primary mx-1" to="/login" role="button"> Login </Link>
+              <Link className="btn btn-primary mx-1" to="/signup" role="button"> Signup </Link>
+
+            </form>
+            </div>        
+
           </div>
+
+          
+
         </div>
       </nav>
     </div>
