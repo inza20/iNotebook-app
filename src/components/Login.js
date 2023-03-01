@@ -23,8 +23,9 @@ export const Login = (props) => {
             //save the auth token and redirect
             localStorage.setItem('token' , json.authtoken);
             navigate("/");
+            props.showAlert("Logged in successfully", "success" )
           } else{
-            alert("Invalid credentials");
+            props.showAlert("Invalid credentials", "danger");
         }   
     }
 

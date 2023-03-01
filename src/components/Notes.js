@@ -3,7 +3,7 @@ import NoteContext from "../context/notes/NoteContext";
 import AddNote from "./AddNote";
 import NotesItem from "./NotesItem";
 
-const  Notes = () => {
+const  Notes = (props) => {
     const context = useContext(NoteContext);
     // const {notes, setNotes} = context;
     // const {notes} = context;
@@ -19,6 +19,7 @@ const  Notes = () => {
     const updateNote = (currentnote) => {        
         ref.current.click();
         setNote({ id: currentnote._id, etitle: currentnote.title, edescription: currentnote.description, etag: currentnote.tag} );
+        
     }
     // Now we have to add functionality to ‘update note’ here after editing.
     // For this, we’ll modify edit function in NoteState such that ‘updateNote’ above can use it.
@@ -28,11 +29,8 @@ const  Notes = () => {
 
         // console.log("Updating the note...", note) 
         editNote(note.id, note.etitle, note.edescription, note.etag)
-        refClose.current.click();  
-
-        console.log("Updating the note...", note)
-        editNote(note.id, note.etitle, note.edescription, note.etag)
-        refClose.current.click();
+        refClose.current.click(); 
+        props.showAlert("Note updated", "success")       
 
     } 
 
@@ -42,7 +40,7 @@ const  Notes = () => {
 
     return (
         <>
-        <AddNote/>
+        <AddNote showAlert={props.showAlert} />
 
         
         <button ref={ref} type="button" className="btn btn-primary d-none" data-bs-toggle="modal" data-bs-target="#exampleModal">
@@ -86,7 +84,7 @@ const  Notes = () => {
             <h1>Your Notes</h1>
             {notes.length === 0 && 'No notes to display'}
             {notes.map((note) => {
-                return <NotesItem key={note._id} updateNote={updateNote} note = {note}/>
+                return <NotesItem key={note._id} updateNote={updateNote} showAlert={props.showAlert}  note = {note}  />
             })}
             {/* mapping from NoteState.js */}
             </div>

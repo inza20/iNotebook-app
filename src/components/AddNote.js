@@ -11,6 +11,7 @@ import NoteContext from "../context/notes/NoteContext";
         // console.log("Add Note")
         addNote(note.title, note.description, note.tag);
         setNote({title: "", description: "", tag: ""})
+        props.showAlert("Note added", "success") 
     }
     const onChange = (e) => {
         setNote({...note, [e.target.name]: e.target.value})

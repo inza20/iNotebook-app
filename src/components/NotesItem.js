@@ -24,7 +24,7 @@ const NotesItem = (props) => {
                     <i className="far fa-edit mx-1" onClick={()=> {updateNote(note)}} ></i>
                     </div>
                     <div className="p-2">
-                    <i className="far fa-trash-alt mx-1" onClick={()=> {deleteNote(note._id)}} ></i>
+                    <i className="far fa-trash-alt mx-1" onClick={()=> {deleteNote(note._id); props.showAlert("Note deleted", "success")  }} ></i>
                     </div>
                     
                   </div>

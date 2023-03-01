@@ -12,11 +12,15 @@ import Alert from "./components/Alert";
 function App() {
 
   const [alert, setAlert] = useState(null);
-  const showAlert = (message, type) => {
-    setAlert({msg: message, type: type})
-    setTimeout(() => {
-      setAlert(null);
-    }, 1500 );
+
+  const showAlert = (message, type)=>{
+      setAlert({
+        msg: message,
+        type: type
+      })
+      setTimeout(() => {
+          setAlert(null);
+      }, 1000);
   }
   
   return (
@@ -24,7 +28,8 @@ function App() {
     <NoteState>
     <BrowserRouter>
       <Navbar/>
-      <Alert alert={alert} />
+      <Alert alert={alert}/>
+      
       <br/>
       <div className="container">
         <Routes>
