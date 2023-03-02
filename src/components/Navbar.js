@@ -1,9 +1,16 @@
 import PropTypes from "prop-types";
 import React from "react";
 // import  { useEffect } from "react";
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 
 export default function Navbar() {
+  let navigate = useNavigate();
+
+  const handleLogout = () => {
+    localStorage.removeItem('token');
+    navigate("/login");
+  }
+
   let location = useLocation();
   // useEffect(() => {
   //   console.log(location.pathname);
@@ -27,6 +34,7 @@ export default function Navbar() {
           >
             <span className="navbar-toggler-icon"></span>
           </button>
+          
           <div className="collapse navbar-collapse" id="navbarNav">
             <ul className="navbar-nav">
               <li className="nav-item">
@@ -40,21 +48,17 @@ export default function Navbar() {
                   About
                 </Link>
               </li>
-            </ul> 
+              </ul> 
 
-            <div className= "d-flex align-items-end flex-row-reverse">
-            <form >
+              <div className= "d-flex align-items-end flex-row-reverse">
+              {!localStorage.getItem('token') ? <form className= "d-flex "> 
               <Link className="btn btn-primary mx-1" to="/login" role="button"> Login </Link>
-              <Link className="btn btn-primary mx-1" to="/signup" role="button"> Signup </Link>
+              <Link className="btn btn-primary mx-1" to="/signup" role="button"> Signup </Link> 
+            </form> 
+            : <button className="btn btn-primary mx-1" onClick={handleLogout} > Logout </button> }
 
-            </form>
-            </div>        
-
+            </div> </div>           
           </div>
-
-          
-
-        </div>
       </nav>
     </div>
   );
