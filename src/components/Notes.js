@@ -2,14 +2,24 @@ import React, { useContext, useEffect, useRef, useState} from "react";
 import NoteContext from "../context/notes/NoteContext";
 import AddNote from "./AddNote";
 import NotesItem from "./NotesItem";
+import {useNavigate} from 'react-router-dom';
 
 const  Notes = (props) => {
     const context = useContext(NoteContext);
+    let navigate = useNavigate();
     // const {notes, setNotes} = context;
     // const {notes} = context;
     const {notes, getNotes, editNote} = context;
+
+    // getNotes() only when local storage has auth-token stored , else don’t get notes and redirect to login page first.
     useEffect(() => {
-      getNotes();     
+      if(localStorage.getItem('token')){ 
+        getNotes();
+      }
+      else {
+        navigate("/login")
+      }        
+      // eslint-disable-next-line   
     }, [])  
 
     const ref = useRef(null);

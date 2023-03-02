@@ -19,7 +19,7 @@ const NoteState = (props) => {
       headers: {
         // the headers we require in Fetch Notes request
         'Content-Type': 'application/json',
-        "auth-token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNjNlNGZlNDEwYWNjMzYzODM4ZTY1NTdjIn0sImlhdCI6MTY3Njg4MzU0MH0.iZuS9gtRpJTGZAGSUQhDdv1WXdWjJ6RBuqqUE1Bn8ek"
+        "auth-token": localStorage.getItem('token')
         // Here, hardcoding auth-token - of the user whose notes to be fetched as login hasn't been implemented yet        
       }          
     });
@@ -36,7 +36,7 @@ const NoteState = (props) => {
       method: 'POST', 
       headers: {
         'Content-Type': 'application/json',
-        "auth-token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNjNlNGZlNDEwYWNjMzYzODM4ZTY1NTdjIn0sImlhdCI6MTY3Njg4MzU0MH0.iZuS9gtRpJTGZAGSUQhDdv1WXdWjJ6RBuqqUE1Bn8ek"
+        "auth-token": localStorage.getItem('token')
         // the headers we require in Add Note request
       },    
       body: JSON.stringify({title, description, tag}) 
@@ -61,7 +61,7 @@ const NoteState = (props) => {
       method: 'DELETE', 
       headers: {
         'Content-Type': 'application/json',
-        "auth-token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNjNlNGZlNDEwYWNjMzYzODM4ZTY1NTdjIn0sImlhdCI6MTY3Njg4MzU0MH0.iZuS9gtRpJTGZAGSUQhDdv1WXdWjJ6RBuqqUE1Bn8ek"
+        "auth-token": localStorage.getItem('token')
         // the headers we require in Update Note request
       }
     });
@@ -83,7 +83,7 @@ const NoteState = (props) => {
       method: 'PUT', 
       headers: {
         'Content-Type': 'application/json',
-        "auth-token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNjNlNGZlNDEwYWNjMzYzODM4ZTY1NTdjIn0sImlhdCI6MTY3Njg4MzU0MH0.iZuS9gtRpJTGZAGSUQhDdv1WXdWjJ6RBuqqUE1Bn8ek"
+        "auth-token": localStorage.getItem('token')
         // the headers we require in Update Note request
       },    
       body: JSON.stringify({title, description, tag}) 

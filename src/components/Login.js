@@ -18,10 +18,10 @@ export const Login = (props) => {
             body: JSON.stringify({email: credentials.email, password: credentials.password })          
           });
           const json = await response.json();
-          console.log(json);
+          // console.log(json);
           if(json.success){
             //save the auth token and redirect
-            localStorage.setItem('token' , json.authtoken);
+            localStorage.setItem('token' , json.authToken);
             navigate("/");
             props.showAlert("Logged in successfully", "success" )
           } else{
@@ -34,7 +34,7 @@ export const Login = (props) => {
     }
 
   return (
-    <div className="my-5">
+    <div className="mt-2">
         <form >
             
             <div className="mb-3 " style={{marginTop: "3.56rem"}}>
